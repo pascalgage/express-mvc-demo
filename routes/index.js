@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 const homeController = require('../controllers/homeController')
+const apiController = require('../controllers/apiController')
 
 /*
 router.get('/', (request, response) => {
@@ -14,6 +15,11 @@ router.get('/about', homeController.about)
 
 router.get('/hello/:name', homeController.sayHello)
 
+router.get('/api', apiController.index)
+
+
+
+// erreur 404 toujours en dernier
 router.all('*', (req, res) => {
     res.status(404).send('Erreur 404 : page non trouvée')
 })
