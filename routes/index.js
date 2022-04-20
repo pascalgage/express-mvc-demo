@@ -17,6 +17,14 @@ router.get('/hello/:name', homeController.sayHello)
 
 router.get('/api', apiController.index)
 
+router.post('/api', apiController.add)
+
+router.get('/api/:id', apiController.getById) 
+
+router.put('/api/:id', apiController.getById)
+
+router.delete('/api/:id', apiController.remove)
+
 
 
 // erreur 404 toujours en dernier

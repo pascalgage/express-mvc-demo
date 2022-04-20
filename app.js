@@ -1,8 +1,13 @@
 // importer le module express
 const express = require('express');
+const bodyParser = require('body-parser')
 
 // application express
 const app = express();
+
+// body parser (analyse le contenu du corps des requêtes)
+app.use(bodyParser.urlencoded())
+//app.use(bodyParser.json())
 
 // middleware : s'exécute à chaque requête
 app.use((req, res, next) => {
@@ -21,6 +26,6 @@ const router = require('./routes')
 app.use('/', router)
 
 // démarrage du serveur
-app.listen(80, () => {
+app.listen(8000, () => {
     console.log("Serveur prêt (http://localhost)")
 });
