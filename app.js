@@ -5,9 +5,11 @@ const bodyParser = require('body-parser')
 // application express
 const app = express();
 
+
 // body parser (analyse le contenu du corps des requêtes)
 app.use(bodyParser.urlencoded())
 //app.use(bodyParser.json())
+
 
 // middleware : s'exécute à chaque requête
 app.use((req, res, next) => {
@@ -17,8 +19,11 @@ app.use((req, res, next) => {
     next()
 })
 
+
+// middleware, s'execute pour les requêtes dont le chemin commence par /public
 // gestion des fichiers statiques
 app.use('/public', express.static(__dirname + '/public'))
+
 
 // import des routes (voir le fichier routes/index.js)
 const router = require('./routes')

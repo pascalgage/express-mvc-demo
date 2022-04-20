@@ -9,11 +9,17 @@ router.get('/', (request, response) => {
     response.send('Accueil')
 })*/
 
+
+/* HOME CONTROLLER */
+
 router.get('/', homeController.index)
 
 router.get('/about', homeController.about)
 
 router.get('/hello/:name', homeController.sayHello)
+
+
+/* API CONTROLLER */
 
 router.get('/api', apiController.index)
 
@@ -26,6 +32,7 @@ router.put('/api/:id', apiController.getById)
 router.delete('/api/:id', apiController.remove)
 
 
+/* ROUTES PAR DEFAUT & ERREURS */
 
 // erreur 404 toujours en dernier
 router.all('*', (req, res) => {
