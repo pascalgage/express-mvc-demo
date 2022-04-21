@@ -68,11 +68,13 @@ exports.add = async (req, res) => {
  exports.update = async (req, res) => {
     console.log(req.body)
     const model = req.body // nécessite body-parser (inclus dans app.js)
+
+    model.id = req.params.id
     
     // TODO: contrôle de saisie dans l'objet model
     
     let result = await repository.update(model)
-    res.status(201).json(result)
+    res.status(202).json(result)
 }
 
 /**

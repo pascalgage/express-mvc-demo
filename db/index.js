@@ -12,4 +12,4 @@ const db = new sqlite3.Database(dbpath, (err) => {
     console.log('Base de données connectée');
 })
 
-module.exports = db
+module.exports = db;
