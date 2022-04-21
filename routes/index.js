@@ -27,7 +27,7 @@ router.post('/api', apiController.add)
 
 router.get('/api/:id', apiController.getById) 
 
-router.put('/api/:id', apiController.put)
+router.put('/api/:id', apiController.update)
 
 router.delete('/api/:id', apiController.remove)
 
