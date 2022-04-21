@@ -65,7 +65,7 @@ exports.add = async (req, res) => {
  * @param {Request} req 
  * @param {Response} res 
  */
- exports.add = async (req, res) => {
+ exports.put = async (req, res) => {
     console.log(req.body)
     const model = req.body // nécessite body-parser (inclus dans app.js)
     
