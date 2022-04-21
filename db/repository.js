@@ -1,4 +1,4 @@
-db = require('./index')
+const db = require('./index')
 
 class Repository 
 {
@@ -31,6 +31,12 @@ class Repository
         })
     }
 
+    /**
+     * execute une requête de lecture (select) et retourne la 1ère ligne correspondante sous forme d'objet
+     * @param {String} sql la requête SQL à exécuter
+     * @param {Array} params le tableau des paramètres de la requête SQL
+     * @returns {Promise} le résultat du traitement
+     */
     getOne(sql, params = []) {
         return new Promise((resolve, reject) => {
             this.db.get(sql, params, (err, row) => {
@@ -45,6 +51,12 @@ class Repository
         })
     }
 
+    /**
+     * execute une requête d'écriture (insert, update, delete) 
+     * @param {String} sql la requête SQL à exécuter
+     * @param {Array} params le tableau des paramètres de la requête SQL
+     * @returns {Promise} le résultat du traitement
+     */
     execute(sql, params = []) {
         return new Promise((resolve, reject) => {
             this.db.run(sql, params, (err, result) => {

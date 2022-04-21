@@ -5,7 +5,7 @@
  * @param {Response} res 
  */
 exports.index = (req, res) => {
-    res.send('Accueil du contrôleur')
+    res.redirect('/candidates')
 }
 
 /**
