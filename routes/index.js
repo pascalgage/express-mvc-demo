@@ -35,12 +35,11 @@ router.post('/api', apiController.add)
 
 /* CANDIDATES CONTROLLER */
 
+router.get('/candidates/edit/:id', candidatesController.update)
+router.get('/candidates/delete/:id', candidatesController.remove)
+router.get('/candidates/add', candidatesController.add)
 router.get('/candidates/:id', candidatesController.getById)
-router.put('/candidates/:id', candidatesController.update)
-router.delete('/candidates/:id', candidatesController.remove)
-
 router.get('/candidates', candidatesController.index)
-router.post('/candidates', candidatesController.add)
 
 
 /* ROUTES PAR DEFAUT & ERREURS */

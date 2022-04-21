@@ -1,39 +1,73 @@
-/* 
-    index    lister les candidats (accueil du controlleur)
-    getById    afficher les détails d'un candidat
-    add    ajouter un nouveau candidat
-    update    modifier un candidat existant
-    remove    supprimer u ncandidat existant
-*/
-
 const repo = require('../db/candidatesRepository')
 
+/**
+ * @method index       lister les candidats (accueil du controlleur)
+ * @method getById     afficher les détails d'un candidat
+ * @method add         ajouter un nouveau candidat
+ * @method update      modifier un candidat existant
+ * @method remove      supprimer un candidat existant
+ */
 module.exports = {
-    async index(req, res) {
 
+    /**
+     * GET /candidates
+     * Affiche la liste des candidats
+     * @param {Request} req 
+     * @param {Response} res 
+     */
+    async index(req, res) {
         try {
             let result = await repo.getAll()
             res.render('index', { model : result, title: 'Liste des candidats' })
         } catch (err) {
             res.status(500).end()
-        }
-
-        
+        }        
     },
 
-    getById(req, res) {
-
+    /**
+     * GET /candidates/:id
+     * Affiche un candidat ou erreur 404 si identifiant inexistant
+     * @param {Request} req 
+     * @param {Response} res 
+     */
+    async getById(req, res) {
+        try {
+            let result = await repo.getById(req.params.id)
+            res.render('candidate', { model : result, title: 'Fiche candidat' })
+        } catch (err) {
+            res.status(500).end()
+        }  
     },
 
-    add(req, res) {
-
+    /**
+     * GET /candidates/add
+     * Affiche le formulaire permettant d'ajouter un candidat 
+     * @param {Request} req 
+     * @param {Response} res 
+     */
+     async add(req, res) {
+        res.render('candidate_add')
     },
 
-    update(req, res) {
-
+    /**
+     * GET /candidates/edit/:id
+     * Affiche le formulaire permettant de modifier un candidat 
+     * @param {Request} req 
+     * @param {Response} res 
+     */
+     async update(req, res) {
+        let result = await repo.getById(req.params.id)
+        res.render('candidate_edit', { model : result })
     },
 
-    remove(req, res) {
-
+    /**
+     * GET /candidates/delete/:id
+     * Affiche la page de confirmation de suppression d'un candidat 
+     * @param {Request} req 
+     * @param {Response} res 
+     */
+    async remove(req, res) {
+        let result = await repo.getById(req.params.id)
+        res.render('candidate_delete', { model : result })
     }
 }
