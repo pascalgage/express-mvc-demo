@@ -25,6 +25,9 @@ app.use((req, res, next) => {
 app.use('/public', express.static(__dirname + '/public'))
 
 
+require('./middlewares/liquid')(app)
+
+
 // import des routes (voir le fichier routes/index.js)
 const router = require('./routes')
 // association du router à l'app
@@ -34,3 +37,4 @@ app.use('/', router)
 app.listen(8000, () => {
     console.log("Serveur prêt (http://localhost)")
 });
+

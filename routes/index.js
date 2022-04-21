@@ -12,24 +12,24 @@ router.get('/', (request, response) => {
 
 /* HOME CONTROLLER */
 
+router.get('/hello/:name', homeController.sayHello)
+router.get('/about', homeController.about)
 router.get('/', homeController.index)
 
-router.get('/about', homeController.about)
 
-router.get('/hello/:name', homeController.sayHello)
 
 
 /* API CONTROLLER */
-
-router.get('/api', apiController.index)
-
-router.post('/api', apiController.add)
 
 router.get('/api/:id', apiController.getById) 
 
 router.put('/api/:id', apiController.update)
 
 router.delete('/api/:id', apiController.remove)
+
+router.get('/api', apiController.index)
+
+router.post('/api', apiController.add)
 
 
 /* ROUTES PAR DEFAUT & ERREURS */
