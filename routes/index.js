@@ -3,6 +3,7 @@ const router = express.Router()
 
 const homeController = require('../controllers/homeController')
 const apiController = require('../controllers/apiController')
+const candidatesController = require('../controllers/candidatesController')
 
 /*
 router.get('/', (request, response) => {
@@ -30,6 +31,16 @@ router.delete('/api/:id', apiController.remove)
 router.get('/api', apiController.index)
 
 router.post('/api', apiController.add)
+
+
+/* CANDIDATES CONTROLLER */
+
+router.get('/candidates/:id', candidatesController.getById)
+router.put('/candidates/:id', candidatesController.update)
+router.delete('/candidates/:id', candidatesController.remove)
+
+router.get('/candidates', candidatesController.index)
+router.post('/candidates', candidatesController.add)
 
 
 /* ROUTES PAR DEFAUT & ERREURS */
