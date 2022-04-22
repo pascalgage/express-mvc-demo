@@ -35,6 +35,6 @@ app.use('/', router)
 
 // démarrage du serveur
 app.listen(8000, () => {
-    console.log("Serveur prêt (http://localhost)")
+    console.log("Serveur prêt (http://localhost:8000)")
 });
 
